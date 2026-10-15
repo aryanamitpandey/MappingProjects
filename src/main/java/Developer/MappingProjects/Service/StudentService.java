@@ -25,6 +25,7 @@ public class StudentService {
         Department department = departmentRepository.getDepartmentById(id);
 
         student.setDepartment(department);
+        department.getStudents().add(student);
         
          studentRepository.saveStudent(student);
     }
@@ -33,6 +34,8 @@ public class StudentService {
     public void createStudent(Student student, String deptName){
         Department department = new Department();
         department.setName(deptName);
+        student.setDepartment(department);
+        department.getStudents().add(student);
         departmentRepository.saveDepartment(department);
         student.setDepartment(department);
 
